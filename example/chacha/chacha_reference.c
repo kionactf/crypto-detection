@@ -132,6 +132,7 @@ int main() {
 
     for (i=0; i < KEYSIZE; i++) key[i] = (u8)i;
     for (i=0; i < IVSIZE; i++) iv[i] = (u8)i;
+    for (i=0; i < INPUTSIZE; i++) input[i] = (u8)i;
 
     ECRYPT_init();
     ECRYPT_keysetup(&x, key, KEYSIZE*8, IVSIZE*8);

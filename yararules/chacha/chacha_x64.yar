@@ -1,5 +1,5 @@
 
-rule Chacha_rol_bytecode {
+rule Chacha_rol_x64 {
     meta:
         description = "Look for rol opcodes on quarterround of Chacha stream cipher"
         date = "2022-04"
@@ -12,7 +12,7 @@ rule Chacha_rol_bytecode {
         $c0 and $c1 and $c2 and $c3
 }
 
-rule ChaCha_rol_bytecode_openssl_SSE3 {
+rule ChaCha_rol_x64_openssl_SSE3 {
     meta:
         description = "Look for ROTATION code for SSE3 openssl on quarterround of Chacha stream cipher"
         date = "2022-04"
@@ -27,7 +27,7 @@ rule ChaCha_rol_bytecode_openssl_SSE3 {
         $c0 and $c1 and $c2 and $c3 and $c4 and $c5
 }
 
-rule ChaCha_rol_bytecode_openssl_8x {
+rule ChaCha_rol_x64_openssl_8x {
     meta:
         description = "Look for ROTATION code for AVX2 openssl on quarterround of Chacha stream cipher"
         date = "2022-04"
@@ -42,7 +42,7 @@ rule ChaCha_rol_bytecode_openssl_8x {
         $c0 and $c1 and $c2 and $c3 and $c4 and $c5
 }
 
-rule ChaCha_rol_bytecode_openssl_AVX512 {
+rule ChaCha_rol_x64_openssl_AVX512 {
     meta:
         description = "Look for ROTATION code for AVX512 openssl on quarterround of Chacha stream cipher"
         date = "2022-04"
