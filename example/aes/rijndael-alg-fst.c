@@ -26,6 +26,7 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 #include <stdio.h>
+#include <string.h>
 
 #include <assert.h>
 #include <stdlib.h>
@@ -1403,18 +1404,22 @@ void rijndaelDecryptRound(const u32 rk[/*4*(Nr + 1)*/], int Nr, u8 block[16], in
 
 #endif /* INTERMEDIATE_VALUE_KAT */
 
+#define KEYSIZE 32
+#define INPUTSIZE 16
+#define OUTPUTSIZE 16
+#define Nk 8
+#define Nr 14
+
 int main() {
-    int static const KEYSIZE = 32;
-    int static const INPUTSIZE = 16;
-    int static const OUTPUTSIZE = 16;
-    int static const Nk = 8;
-    int static const Nr = 14;
     u8 cipherKey[KEYSIZE];
     u32 rk[4*(Nr+1)];
     u8 pt[INPUTSIZE];
     u8 ct[OUTPUTSIZE];
 
     int i;
+
+    memset(rk, 0, 4*(Nr+1));
+    memset(ct, 0, OUTPUTSIZE);
 
     for (i=0; i < KEYSIZE; i++) cipherKey[i] = (u8)i;
     for (i=0; i < INPUTSIZE; i++) pt[i] = (u8)i;

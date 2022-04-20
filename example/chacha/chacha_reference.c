@@ -7,6 +7,7 @@ Public domain.
 */
 
 #include <stdio.h>
+#include <string.h>
 
 #include "ecrypt-sync.h"
 
@@ -117,18 +118,19 @@ void ECRYPT_keystream_bytes(ECRYPT_ctx *x,u8 *stream,u32 bytes)
   ECRYPT_encrypt_bytes(x,stream,stream,bytes);
 }
 
-
+#define KEYSIZE 32
+#define IVSIZE 8
+#define INPUTSIZE 100
+#define OUTPUTSIZE 100
 int main() {
-    int static const KEYSIZE = 32;
-    int static const IVSIZE = 8;
-    int static const INPUTSIZE = 100;
-    int static const OUTPUTSIZE = 100;
     u8 input[INPUTSIZE];
     u8 key[KEYSIZE];
     u8 iv[IVSIZE];
     u8 output[OUTPUTSIZE];
     int i;
     ECRYPT_ctx x;
+
+    memset(output, 0, OUTPUTSIZE);
 
     for (i=0; i < KEYSIZE; i++) key[i] = (u8)i;
     for (i=0; i < IVSIZE; i++) iv[i] = (u8)i;
