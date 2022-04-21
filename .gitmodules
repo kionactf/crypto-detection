@@ -1,0 +1,3 @@
+[submodule "example/example/sha3/XKCP"]
+	path = example/example/sha3/XKCP
+	url = https://github.com/XKCP/XKCP
