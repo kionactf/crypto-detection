@@ -19,8 +19,9 @@ rule rc4_ksa_x64_2 {
         date = "2022-04"
     strings:
         $c0 = {81 7? ?? ff 00 00 00} // cmpl   $0xff,-0x?(%r??)
+        $c1 = {81 7? ?? 00 01 00 00} // cmpl   $0x100,-0x?(%r??)
     condition:
-        $c0 
+        $c0 or $c1
 }
 
 rule rc4_ksa_openssl_x64 {
