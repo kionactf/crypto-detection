@@ -26,10 +26,13 @@ rule SHA1_bytecode_x64_openssl_ssse3 {
         description = "Look for opcodes for SHA1 on openssl sse3"
         date = "2022-04"
     strings:
-        $c0 = {c1 c? 05}//rol 0x5,??
-        $c1 = {c1 c? 07}//ror 0x7,??
+        $c0 = {66 41 0f 73 d? 04}//psrldq $0x4,%xmm?
+        $c1 = {66 41 0f 73 f? 0c}//pslldq $0xc,%xmm?
+        $c2 = {66 41 0f 72 d? 1f}//psrld  $0x1f,%xmm?
+        $c3 = {66 41 0f 72 d? 1e}//psrld  $0x1e,%xmm?
+        $c4 = {66 41 0f 72 f? 02}//pslld  $0x2,%xmm?
     condition:
-        $c0 and $c1
+        $c0 and $c1 and $c2 and $c3 and $c4
 }
 
 rule SHA1_bytecode_x64_openssl_avx {
