@@ -7,6 +7,8 @@ We focus on last stage, since crypto functions include in the stage's binary.
 | -------------------- | ----- |
 | file type            | Win32 EXE (PE32)|
 | arch                 | i386 (32bit)|
+| language             | C++|
+| compiler             | Microsoft Visual C++|
 | crypto library       | Crypto++(statically linked), proprietary |
 | crypto functionality | RSA OAEP with SHA-1(Crypto++), RC4(proprietary)|
 

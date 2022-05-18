@@ -4,6 +4,8 @@
 | -------------------- | ----- |
 | file type            | Elf64|
 | arch                 | x86-64 (64bit)|
+| language             | C |
+| compiler             | gcc 9.4.0 |
 | crypto library       | proprietary, published |
 | crypto functionality | ChaCha20(proprietary), SHA-256(published code)|
 
