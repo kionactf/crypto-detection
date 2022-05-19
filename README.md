@@ -50,6 +50,9 @@ This enables us to identify crypto more robust comparing with the approach such 
   - constants
   - x86-64 instructions
   - x86-64 instructions from OpenSSL
+- BASE64
+  - constants
+  - x86-64 instructions
 
 ## related project
 - [Yara-Rules/rules](https://github.com/Yara-Rules/rules)
