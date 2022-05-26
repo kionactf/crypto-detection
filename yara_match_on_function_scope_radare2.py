@@ -128,7 +128,7 @@ def get_funcaddr(r2_bin, funcaddr):
     else:
         return funcaddrresult[0]['offset']
 
-@lru_cache
+@lru_cache(maxsize=None)
 def create_reference_graph(refaddr, reftype, depth, r2_bin, curdepth=0):
     rootnode = get_node(refaddr, reftype, r2_bin)
     rrgnm = ReferenceRootedGraphNodeManager(rootnode)

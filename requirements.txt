@@ -1,0 +1,6 @@
+pefile>=2021.9.3
+ply>=3.11
+plyara>=2.1.1
+pyelftools>=0.28
+r2pipe>=1.6.5
+yara-python>=4.2.0

@@ -1,4 +1,4 @@
-# crypto-detection
+# Crypto-Detection
 
 This is collection of yara rules related crypto/encoding/compression functions.
 And add detection program for the crypto with these yara rules.
@@ -14,12 +14,19 @@ For example, if we do not detect the constant "0x61707865" (chacha20 constant) b
 Our method is signature-based detection.
 However, not only well-known constants for crypto libraries are included in the signatures, we add signatures based on _assembly codes_.
 yara rules are flexible so that we can support various crypto patterns.
-As already indicated by [A.Adamov](https://www.virusbulletin.com/uploads/pdf/conference_slides/2018/Adamov-VB2018-AIAssistWithRansomware.pdf), some binary might evade detection by some crypto patterns.
+As already indicated by [A.Adamov](https://www.virusbulletin.com/uploads/pdf/conference_slides/2018/Adamov-VB2018-AIAssistWithRansomware.pdf), some binary might evade detection by some crypto patterns (simple bytecode signature matching or call graph analysis).
+
+For example,
+- use registers different from original one
+- swap instructions if the order does not matter
+- move instructions to new functions and call the function
+- insert no meaning instructions
+
 We can handle those patterns by crafting yara rules.
 We create yara rules by extracting distinctive instructions and applying wild-cards for not relying specific registers.
 This enables us to identify crypto more robust comparing with the approach such as [FLIRT](https://hex-rays.com/products/ida/tech/flirt/in_depth/).
 
-## Supported crypto
+## Supported Crypto
 - Chacha20
   - constants
   - x86-64 instructions
@@ -54,7 +61,17 @@ This enables us to identify crypto more robust comparing with the approach such 
   - constants
   - x86-64 instructions
 
-## related project
+## Tool for Supporting Yara Rule Analysis
+- print\_vaddr\_from\_yara\_result.py
+
+  simple yara rule matching tool with displaying virtual addresses for matched strings.
+- yara\_match\_on\_function\_scope\_radare2.py
+
+  yara rule matching tool within functions/data referenced from given function address supported by radare2 function/data analysis
+
+See [Tools](doc/tools.md) for requirements and usage examples.
+
+## Related Project
 - [Yara-Rules/rules](https://github.com/Yara-Rules/rules)
 - [FindCrypt](https://github.com/you0708/ida/tree/master/idapython_tools/findcrypt)
 - [Manalyze](https://github.com/JusticeRage/Manalyze)
@@ -64,9 +81,13 @@ This enables us to identify crypto more robust comparing with the approach such 
 - [findcrypt-yara](https://github.com/polymorf/findcrypt-yara)
 - [ghidraninja/ghidra_scripts](https://github.com/ghidraninja/ghidra_scripts)
 - [stelftools](https://github.com/shuakabane/stelftools)
-  This is an identification tool for standard C libraries by yara rules.
 
-## apply yara rules for decompiler
+  This is an identification tool for standard C libraries by yara rules.
+- [grap](https://github.com/QuoSecGmbH/grap)
+
+  yara-like tool for detect graph patterns within binaries
+
+## Apply Yara Rules for Decompiler
 Some plugins have been developed.
 
 IDA:
